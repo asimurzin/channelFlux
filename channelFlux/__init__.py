@@ -40,13 +40,17 @@ if FOAM_BRANCH_VERSION( "dev", ">=", "010600" ):
 #--------------------------------------------------------------------------------------
 def entry_point():
     try:
-       import sys; argv = sys.argv
-       return main_standalone( len( argv ), argv )
+       engine = main_standalone
+       pass
     except NameError:
        print
        print "There is no implementation of the current OpenFOAM version"
        print
+       import os; os._exit( os.EX_OK )
        pass
+    
+    import sys; argv = sys.argv
+    return engine( len( argv ), argv )
 
 
 #--------------------------------------------------------------------------------------
