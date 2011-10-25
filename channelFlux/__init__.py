@@ -38,6 +38,12 @@ if FOAM_BRANCH_VERSION( "dev", ">=", "010600" ):
 
 
 #--------------------------------------------------------------------------------------
+if FOAM_VERSION( ">=", "020000" ):
+    from channelFlux.r2_0_0 import main_standalone
+    pass
+
+
+#--------------------------------------------------------------------------------------
 def entry_point():
     try:
        engine = main_standalone
